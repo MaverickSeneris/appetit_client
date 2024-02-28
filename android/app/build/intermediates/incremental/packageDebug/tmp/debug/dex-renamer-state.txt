@@ -1,16 +1,19 @@
-#Mon Feb 26 11:30:43 PST 2024
-path.4=classes2.dex
-path.3=14/classes.dex
-path.2=10/classes.dex
-path.1=0/classes.dex
+#Wed Feb 28 23:41:39 PST 2024
+base.0=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
+base.2=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.3=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
+base.4=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+base.5=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
 path.0=classes.dex
-base.4=/home/maverick/Desktop/Development/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
-base.3=/home/maverick/Desktop/Development/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
-base.2=/home/maverick/Desktop/Development/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
-base.1=/home/maverick/Desktop/Development/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.0=/home/maverick/Desktop/Development/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-renamed.3=classes4.dex
-renamed.2=classes3.dex
-renamed.1=classes2.dex
+path.1=0/classes.dex
+path.2=0/classes.dex
+path.3=10/classes.dex
+path.4=14/classes.dex
+path.5=classes2.dex
 renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex
 renamed.4=classes5.dex
+renamed.5=classes6.dex
