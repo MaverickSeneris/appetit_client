@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, ActivityIndicator, StyleSheet, Image, ScrollView} from 'react-native';
 import axios from 'axios';
+import LoadingScreen from './LoadingScreen';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -11,7 +12,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(apiUri);
-        console.log(response.data);
+        // console.log(response.data);
         setRecipes(response.data);
         setLoading(false);
       } catch (error) {
@@ -23,16 +24,16 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const recipeEls = recipes.map(item => {
+  const recipeEls = recipes.map(recipe => {
     return (
-      <View key={item._id} style={styles.recipesList}>
+      <View key={recipe._id} style={styles.recipesList}>
         <View style={styles.userInfoContainer}>
-          <Text style={styles.recipeText}>{item.recipe}</Text>
-          <Text style={styles.authorText}>{item.author}</Text>
+          <Text style={styles.recipeText}>{recipe.name}</Text>
+          <Text style={styles.authorText}>{recipe.description}</Text>
         </View>
 
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{uri: item.image}} />
+          <Image style={styles.image} source={{uri: recipe.image}} />
         </View>
       </View>
     );
@@ -41,7 +42,7 @@ const Home = () => {
   return (
     <ScrollView style={styles.container}>
       {loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
+        <LoadingScreen/>
       ) : recipes ? (
         <View style={styles.recipeFeed}>
           <Text style={{fontSize: 40, fontWeight: '700', color: 'black'}}>
