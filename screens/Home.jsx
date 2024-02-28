@@ -8,7 +8,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUri = 'http://192.168.1.101:8080/recipes';
+    const apiUri = 'http://192.168.1.237:8080/recipes';
     const fetchData = async () => {
       try {
         const response = await axios.get(apiUri);

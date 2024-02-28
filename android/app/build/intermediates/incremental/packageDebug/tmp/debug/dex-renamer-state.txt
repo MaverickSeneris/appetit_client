@@ -1,10 +1,10 @@
-#Wed Feb 28 23:41:39 PST 2024
-base.0=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
-base.2=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.3=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
-base.4=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
-base.5=/Users/maverickseneris/Development/React/Appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+#Thu Feb 29 03:56:25 PST 2024
+base.0=/Users/maverickseneris/Development/React/appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/maverickseneris/Development/React/appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
+base.2=/Users/maverickseneris/Development/React/appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.3=/Users/maverickseneris/Development/React/appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
+base.4=/Users/maverickseneris/Development/React/appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+base.5=/Users/maverickseneris/Development/React/appetit/appetit_client/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=0/classes.dex
