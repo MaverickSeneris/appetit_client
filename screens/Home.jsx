@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
+import {Fonts, Colors} from '../globalStyles/theme';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -29,25 +30,31 @@ const Home = () => {
       {loading ? (
         <LoadingScreen />
       ) : recipes ? (
-        <View style={styles.recipeFeed}>
-          <Text style={{fontSize: 40, fontWeight: '700', color: 'black'}}>
-            User Recipes
-          </Text>
-          <FlatList
-            keyExtractor={item => item._id}
-            data={recipes}
-            renderItem={({item}) => (
-              <View style={styles.recipesList}>
-                <View style={styles.userInfoContainer}>
-                  <Text style={styles.recipeText}>{item.name}</Text>
-                  <Text style={styles.authorText}>{item.description}</Text>
+        <View>
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>Your Recipes</Text>
+          </View>
+          <View style={styles.cardContainer}>
+            <FlatList
+              numColumns={2}
+              keyExtractor={item => item._id}
+              data={recipes}
+              renderItem={({item}) => (
+                <View style={styles.card}>
+                  <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={{uri: item.image}} />
+                  </View>
+                  <View style={styles.infoContainer}>
+                    <Text style={styles.name}>{item.name}</Text>
+                    <View style={styles.details}>
+                      <Text style={styles.textDetail}>Yield: {item.yield}</Text>
+                      <Text style={styles.textDetail}>Time: {item.cookingTime}</Text>
+                    </View>
+                  </View>
                 </View>
-                <View style={styles.imageContainer}>
-                  <Image style={styles.image} source={{uri: item.image}} />
-                </View>
-              </View>
-            )}
-          />
+              )}
+            />
+          </View>
         </View>
       ) : (
         <Text>No data available</Text>
@@ -58,32 +65,71 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     width: '100%',
-    paddingVertical: 15,
+    paddingVertical: 20,
     paddingHorizontal: 20,
   },
-  recipeFeed: {
-    width: '100%',
-    justifyContent: 'center',
+  headerContainer: {
+    marginTop: 50,
+    marginBottom: 30,
   },
-  recipesList: {
-    width: '100%',
+  header: {
+    fontFamily: Fonts.SEMIDBOLD,
+    fontSize: 22,
   },
-  userInfoContainer: {
-    justifyContent: 'center',
+  cardContainer: {
+    borderRadius: 8,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  recipeText: {
-    fontSize: 20,
-    fontWeight: '600',
+  card: {
+    width: 168,
+    height: 220,
+    backgroundColor: 'white',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
+    borderRadius: 8,
+    margin: 5,
   },
   imageContainer: {
+    borderRadius: 8,
     width: '100%',
+    height: 145,
   },
   image: {
+    borderTopRightRadius: 8,
+    borderTopLeftRadius: 8,
     width: '100%',
-    height: 300,
-    borderRadius: 10,
+    height: 145,
   },
+  infoContainer:{
+    padding: 7
+  },
+  name:{
+    fontFamily: Fonts.MEDIUM,
+    fontSize: 14
+  },
+  details:{
+    marginTop: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingRight: 10
+  },
+  textDetail:{
+    fontFamily: Fonts.MEDIUM,
+    fontSize: 12,
+    color: "rgba(0,0,0,0.50)"
+  }
 });
 
 export default Home;
