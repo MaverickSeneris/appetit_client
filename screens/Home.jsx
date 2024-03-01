@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, ActivityIndicator, StyleSheet, Image, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
 
@@ -12,7 +12,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(apiUri);
-        // console.log(response.data);
+        console.log(response.data);
         setRecipes(response.data);
         setLoading(false);
       } catch (error) {
@@ -24,36 +24,35 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const recipeEls = recipes.map(recipe => {
-    return (
-      <View key={recipe._id} style={styles.recipesList}>
-        <View style={styles.userInfoContainer}>
-          <Text style={styles.recipeText}>{recipe.name}</Text>
-          <Text style={styles.authorText}>{recipe.description}</Text>
-        </View>
-
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{uri: recipe.image}} />
-        </View>
-      </View>
-    );
-  });
-
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       {loading ? (
-        <LoadingScreen/>
+        <LoadingScreen />
       ) : recipes ? (
         <View style={styles.recipeFeed}>
           <Text style={{fontSize: 40, fontWeight: '700', color: 'black'}}>
             User Recipes
           </Text>
-          {recipeEls}
+          <FlatList
+            keyExtractor={item => item._id}
+            data={recipes}
+            renderItem={({item}) => (
+              <View style={styles.recipesList}>
+                <View style={styles.userInfoContainer}>
+                  <Text style={styles.recipeText}>{item.name}</Text>
+                  <Text style={styles.authorText}>{item.description}</Text>
+                </View>
+                <View style={styles.imageContainer}>
+                  <Image style={styles.image} source={{uri: item.image}} />
+                </View>
+              </View>
+            )}
+          />
         </View>
       ) : (
         <Text>No data available</Text>
       )}
-    </ScrollView>
+    </View>
   );
 };
 
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 300,
-    borderRadius: 10
+    borderRadius: 10,
   },
 });
 
