@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
-import {Fonts, Colors} from '../globalStyles/theme';
+import {Fonts} from '../globalStyles/theme';
 
-const Home = () => {
+const HomeScreen = ({navigation}) => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,7 +40,9 @@ const Home = () => {
               keyExtractor={item => item._id}
               data={recipes}
               renderItem={({item}) => (
-                <View style={styles.card}>
+                <TouchableOpacity
+                  style={styles.card}
+                  onPress={() => navigation.navigate('Recipe')}>
                   <View style={styles.imageContainer}>
                     <Image style={styles.image} source={{uri: item.image}} />
                   </View>
@@ -48,10 +50,12 @@ const Home = () => {
                     <Text style={styles.name}>{item.name}</Text>
                     <View style={styles.details}>
                       <Text style={styles.textDetail}>Yield: {item.yield}</Text>
-                      <Text style={styles.textDetail}>Time: {item.cookingTime}</Text>
+                      <Text style={styles.textDetail}>
+                        Time: {item.cookingTime}
+                      </Text>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
               )}
             />
           </View>
@@ -67,12 +71,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    paddingVertical: 20,
+    // paddingVertical: 20,
     paddingHorizontal: 20,
   },
   headerContainer: {
-    marginTop: 50,
-    marginBottom: 30,
+    marginTop: 30,
+    marginBottom: 20,
   },
   header: {
     fontFamily: Fonts.SEMIDBOLD,
@@ -112,24 +116,24 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 145,
   },
-  infoContainer:{
-    padding: 7
+  infoContainer: {
+    padding: 7,
   },
-  name:{
+  name: {
     fontFamily: Fonts.MEDIUM,
-    fontSize: 14
+    fontSize: 14,
   },
-  details:{
+  details: {
     marginTop: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingRight: 10
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingRight: 10,
   },
-  textDetail:{
+  textDetail: {
     fontFamily: Fonts.MEDIUM,
     fontSize: 12,
-    color: "rgba(0,0,0,0.50)"
-  }
+    color: 'rgba(0,0,0,0.50)',
+  },
 });
 
-export default Home;
+export default HomeScreen;
