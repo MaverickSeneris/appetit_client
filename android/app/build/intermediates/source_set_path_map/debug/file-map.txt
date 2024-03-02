@@ -37,5 +37,6 @@ com.appetit_client.app-packageDebugResources-35 /Users/maverickseneris/Developme
 com.appetit_client.app-merged_res-36 /Users/maverickseneris/Development/React/appetit/appetit_client/android/app/build/intermediates/merged_res/debug
 com.appetit_client.app-debug-37 /Users/maverickseneris/Development/React/appetit/appetit_client/android/app/src/debug/res
 com.appetit_client.app-main-38 /Users/maverickseneris/Development/React/appetit/appetit_client/android/app/src/main/res
-com.appetit_client.app-packaged_res-39 /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-safe-area-context/android/build/intermediates/packaged_res/debug
-com.appetit_client.app-packaged_res-40 /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-screens/android/build/intermediates/packaged_res/debug
+com.appetit_client.app-packaged_res-39 /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/packaged_res/debug
+com.appetit_client.app-packaged_res-40 /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-safe-area-context/android/build/intermediates/packaged_res/debug
+com.appetit_client.app-packaged_res-41 /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-screens/android/build/intermediates/packaged_res/debug

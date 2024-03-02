@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
+  Button
 } from 'react-native';
 import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
@@ -57,10 +58,17 @@ const HomeScreen = ({navigation}) => {
                   </View>
                   <View style={styles.infoContainer}>
                     <Text style={styles.name}>{item.name}</Text>
+
+                    <View style={{flexDirection: "row"}}>
+                      {item.typeOfDish.map((type, index) => (
+                        <View key={index}>
+                          <Text style={styles.textDetail}>{type} </Text>
+                        </View>
+                      ))}
+                    </View>
+
                     <View style={styles.details}>
-                      {/* <Text style={styles.textDetail}>Yield: {item.yield}</Text> */}
                       <Text style={styles.textDetail}>
-                        {/* Time: {item.cookingTime.duration} */}
                         <Text>{`${item.cookingTime.duration} ${
                           item.cookingTime.duration > 1
                             ? item.cookingTime.unit + 's'
@@ -80,6 +88,7 @@ const HomeScreen = ({navigation}) => {
       ) : (
         <Text>No data available</Text>
       )}
+      <Button title="Create Recipe" onPress={()=>navigation.navigate("Create Recipe")}/>
     </View>
   );
 };

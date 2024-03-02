@@ -1,9 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import HomeScreen from './screens/HomeScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+// Screens
+import HomeScreen from './screens/HomeScreen';
 import RecipeDetailScreen from './screens/RecipeDetailScreen';
+import CreateRecipeScreen from './screens/CreateRecipeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +20,7 @@ export default function App() {
         options={{ title: 'Overview' }} 
         />
         <Stack.Screen name="Recipe" component={RecipeDetailScreen}/>
+        <Stack.Screen name="Create Recipe" component={CreateRecipeScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

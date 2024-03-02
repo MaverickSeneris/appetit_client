@@ -78,41 +78,60 @@
 46-->/Users/maverickseneris/Development/React/appetit/appetit_client/android/app/src/main/AndroidManifest.xml:21:23-70
 47            </intent-filter>
 48        </activity>
-49        <activity
-49-->[com.facebook.react:react-android:0.73.4] /Users/maverickseneris/.gradle/caches/transforms-3/b4db2f23f2ab214a51186ce21dfe946e/transformed/jetified-react-android-0.73.4-debug/AndroidManifest.xml:19:9-21:40
-50            android:name="com.facebook.react.devsupport.DevSettingsActivity"
-50-->[com.facebook.react:react-android:0.73.4] /Users/maverickseneris/.gradle/caches/transforms-3/b4db2f23f2ab214a51186ce21dfe946e/transformed/jetified-react-android-0.73.4-debug/AndroidManifest.xml:20:13-77
-51            android:exported="false" />
-51-->[com.facebook.react:react-android:0.73.4] /Users/maverickseneris/.gradle/caches/transforms-3/b4db2f23f2ab214a51186ce21dfe946e/transformed/jetified-react-android-0.73.4-debug/AndroidManifest.xml:21:13-37
-52
-53        <provider
-53-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-54            android:name="androidx.startup.InitializationProvider"
-54-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-55            android:authorities="com.appetit_client.androidx-startup"
-55-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-56            android:exported="false" >
-56-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-57            <meta-data
-57-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-58                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-58-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-59                android:value="androidx.startup" />
-59-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-60            <meta-data
-60-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/maverickseneris/.gradle/caches/transforms-3/71b91ea8216105cda74b0317da307340/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
-61                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-61-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/maverickseneris/.gradle/caches/transforms-3/71b91ea8216105cda74b0317da307340/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
-62                android:value="androidx.startup" />
-62-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/maverickseneris/.gradle/caches/transforms-3/71b91ea8216105cda74b0317da307340/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
-63        </provider>
-64
-65        <meta-data
-65-->[com.facebook.soloader:soloader:0.10.5] /Users/maverickseneris/.gradle/caches/transforms-3/03d018e18e7118763cc731de8f689ba0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:12:9-14:37
-66            android:name="com.facebook.soloader.enabled"
-66-->[com.facebook.soloader:soloader:0.10.5] /Users/maverickseneris/.gradle/caches/transforms-3/03d018e18e7118763cc731de8f689ba0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:13:13-57
-67            android:value="false" />
-67-->[com.facebook.soloader:soloader:0.10.5] /Users/maverickseneris/.gradle/caches/transforms-3/03d018e18e7118763cc731de8f689ba0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
-68    </application>
-69
-70</manifest>
+49
+50        <provider
+50-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
+51            android:name="com.imagepicker.ImagePickerProvider"
+51-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-63
+52            android:authorities="com.appetit_client.imagepickerprovider"
+52-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-71
+53            android:exported="false"
+53-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
+54            android:grantUriPermissions="true" >
+54-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
+55            <meta-data
+55-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-15:70
+56                android:name="android.support.FILE_PROVIDER_PATHS"
+56-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:17-67
+57                android:resource="@xml/imagepicker_provider_paths" />
+57-->[:react-native-image-picker] /Users/maverickseneris/Development/React/appetit/appetit_client/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+58        </provider>
+59
+60        <activity
+60-->[com.facebook.react:react-android:0.73.4] /Users/maverickseneris/.gradle/caches/transforms-3/b4db2f23f2ab214a51186ce21dfe946e/transformed/jetified-react-android-0.73.4-debug/AndroidManifest.xml:19:9-21:40
+61            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+61-->[com.facebook.react:react-android:0.73.4] /Users/maverickseneris/.gradle/caches/transforms-3/b4db2f23f2ab214a51186ce21dfe946e/transformed/jetified-react-android-0.73.4-debug/AndroidManifest.xml:20:13-77
+62            android:exported="false" />
+62-->[com.facebook.react:react-android:0.73.4] /Users/maverickseneris/.gradle/caches/transforms-3/b4db2f23f2ab214a51186ce21dfe946e/transformed/jetified-react-android-0.73.4-debug/AndroidManifest.xml:21:13-37
+63
+64        <provider
+64-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+65            android:name="androidx.startup.InitializationProvider"
+65-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+66            android:authorities="com.appetit_client.androidx-startup"
+66-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+67            android:exported="false" >
+67-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+68            <meta-data
+68-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+69                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+69-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+70                android:value="androidx.startup" />
+70-->[androidx.emoji2:emoji2:1.2.0] /Users/maverickseneris/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+71            <meta-data
+71-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/maverickseneris/.gradle/caches/transforms-3/71b91ea8216105cda74b0317da307340/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+72                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+72-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/maverickseneris/.gradle/caches/transforms-3/71b91ea8216105cda74b0317da307340/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+73                android:value="androidx.startup" />
+73-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/maverickseneris/.gradle/caches/transforms-3/71b91ea8216105cda74b0317da307340/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+74        </provider>
+75
+76        <meta-data
+76-->[com.facebook.soloader:soloader:0.10.5] /Users/maverickseneris/.gradle/caches/transforms-3/03d018e18e7118763cc731de8f689ba0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:12:9-14:37
+77            android:name="com.facebook.soloader.enabled"
+77-->[com.facebook.soloader:soloader:0.10.5] /Users/maverickseneris/.gradle/caches/transforms-3/03d018e18e7118763cc731de8f689ba0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:13:13-57
+78            android:value="false" />
+78-->[com.facebook.soloader:soloader:0.10.5] /Users/maverickseneris/.gradle/caches/transforms-3/03d018e18e7118763cc731de8f689ba0/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
+79    </application>
+80
+81</manifest>

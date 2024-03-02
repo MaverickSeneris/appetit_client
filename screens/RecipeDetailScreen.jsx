@@ -36,11 +36,11 @@ export default function RecipeDetailScreen({navigation, route}) {
   }, [itemId]);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       {loading ? (
         <ActivityIndicator size="large" color="orange" />
       ) : selectedRecipe ? (
-        <View>
+        <ScrollView>
           {/* Image elements */}
           <View style={styles.imageContainer}>
             <Image style={styles.image} source={{uri: selectedRecipe.image}} />
@@ -67,11 +67,11 @@ export default function RecipeDetailScreen({navigation, route}) {
             <Text style={styles.infoHeaders}>Instructions</Text>
             <Text>{selectedRecipe.instructions}</Text>
           </View>
-        </View>
+        </ScrollView>
       ) : (
         <Text>No data available</Text>
       )}
-    </ScrollView>
+    </View>
   );
 }
 
