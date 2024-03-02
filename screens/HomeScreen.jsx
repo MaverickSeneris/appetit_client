@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
 import {Fonts} from '../globalStyles/theme';
@@ -42,16 +49,26 @@ const HomeScreen = ({navigation}) => {
               renderItem={({item}) => (
                 <TouchableOpacity
                   style={styles.card}
-                  onPress={() => navigation.navigate('Recipe', {itemId: item._id})}>
+                  onPress={() =>
+                    navigation.navigate('Recipe', {itemId: item._id})
+                  }>
                   <View style={styles.imageContainer}>
                     <Image style={styles.image} source={{uri: item.image}} />
                   </View>
                   <View style={styles.infoContainer}>
                     <Text style={styles.name}>{item.name}</Text>
                     <View style={styles.details}>
-                      <Text style={styles.textDetail}>Yield: {item.yield}</Text>
+                      {/* <Text style={styles.textDetail}>Yield: {item.yield}</Text> */}
                       <Text style={styles.textDetail}>
-                        Time: {item.cookingTime}
+                        {/* Time: {item.cookingTime.duration} */}
+                        <Text>{`${item.cookingTime.duration} ${
+                          item.cookingTime.duration > 1
+                            ? item.cookingTime.unit + 's'
+                            : item.cookingTime.unit
+                        }`}</Text>
+                      </Text>
+                      <Text style={styles.textDetail}>
+                        Serves: {item.serves}
                       </Text>
                     </View>
                   </View>
