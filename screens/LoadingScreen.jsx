@@ -10,7 +10,7 @@ export default function LoadingScreen() {
       </View>
       <Text style={{fontSize: 30, fontWeight: "700", color: "red"}}>Appetit</Text>
       <View style={{marginTop: 100}}>
-        <ActivityIndicator size="extra-large" color="orange" />
+        <ActivityIndicator size="large" color="orange" />
       </View>
     </View>
   );

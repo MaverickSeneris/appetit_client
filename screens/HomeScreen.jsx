@@ -6,7 +6,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
-  Button
+  Button,
 } from 'react-native';
 import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
@@ -20,10 +20,14 @@ const HomeScreen = ({navigation}) => {
     const apiUri = 'http://192.168.1.237:8080/recipes';
     const fetchData = async () => {
       try {
+        
         const response = await axios.get(apiUri);
         console.log(response.data);
         setRecipes(response.data);
-        setLoading(false);
+        // setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
       } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false);
@@ -32,6 +36,8 @@ const HomeScreen = ({navigation}) => {
 
     fetchData();
   }, []);
+
+ 
 
   return (
     <View style={styles.container}>
@@ -59,7 +65,7 @@ const HomeScreen = ({navigation}) => {
                   <View style={styles.infoContainer}>
                     <Text style={styles.name}>{item.name}</Text>
 
-                    <View style={{flexDirection: "row"}}>
+                    <View style={{flexDirection: 'row'}}>
                       {item.typeOfDish.map((type, index) => (
                         <View key={index}>
                           <Text style={styles.textDetail}>{type} </Text>
@@ -84,11 +90,14 @@ const HomeScreen = ({navigation}) => {
               )}
             />
           </View>
+          <Button
+            title="Create Recipe"
+            onPress={() => navigation.navigate('Create Recipe')}
+          />
         </View>
       ) : (
         <Text>No data available</Text>
       )}
-      <Button title="Create Recipe" onPress={()=>navigation.navigate("Create Recipe")}/>
     </View>
   );
 };

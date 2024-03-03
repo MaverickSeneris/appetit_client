@@ -5,50 +5,13 @@ import {
   View,
   TextInput,
   Button,
+  TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import React from 'react';
 import {Fonts} from '../globalStyles/theme';
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 export default function CreateRecipeScreen() {
-  const [imageSource, setImageSource] = useState('');
-
-  const selectFromCamera = () => {
-    const options = {
-      mediaType: 'photo',
-      quality: 1,
-    };
-
-    launchCamera(options, response => {
-      if (response.didCancel) {
-        console.log('User cancelled camera picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else {
-        const source = {uri: response.uri};
-        setImageSource(source);
-      }
-    });
-  };
-
-  const selectFromGallery = () => {
-    const options = {
-      mediaType: 'photo',
-      quality: 1,
-    };
-
-    launchImageLibrary(options, response => {
-      if (response.didCancel) {
-        console.log('User cancelled image library picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else {
-        const source = {uri: response.uri};
-        setImageSource(source);
-      }
-    });
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -64,16 +27,17 @@ export default function CreateRecipeScreen() {
             />
             <Text style={styles.label}>Description</Text>
             <TextInput
-              multiline={true}
-              style={styles.input}
+              multiline
+              editable
+              numberOfLines={10}
+              maxLength={40}
+              style={styles.inputDescription}
               placeholder="Grandama's delicious recipe..."
             />
             <Text style={styles.label}>Recipe Photo</Text>
-            {imageSource && <Image source={imageSource} style={styles.image} />}
-            <View style={styles.buttonContainer}>
-              <Button title="Select from Camera" onPress={selectFromCamera} />
-              <Button title="Select from Gallery" onPress={selectFromGallery} />
-            </View>
+            <TouchableOpacity style={styles.uploadArea}>
+              <AntDesign name="picture" style={{fontSize:50, color: "gray"}}/>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -107,6 +71,39 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     paddingHorizontal: 20,
-    gap: 10
+    gap: 10,
   },
+  form: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  label: {
+    fontFamily: Fonts.MEDIUM,
+    fontSize: 14,
+    marginVertical: 10
+  },
+  input: {
+    fontFamily: Fonts.REGULAR,
+    backgroundColor: 'rgba(0,0,0,0.10)',
+    width: 327,
+    height: 53,
+    borderRadius: 8,
+    padding: 20,
+  },
+  inputDescription: {
+    fontFamily: Fonts.REGULAR,
+    backgroundColor: 'rgba(0,0,0,0.10)',
+    width: 327,
+    height: 100,
+    borderRadius: 8,
+    padding: 2,
+  },
+  uploadArea:{
+    width: 327,
+    height: 190,
+    backgroundColor:'rgba(0,0,0,0.10)',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
