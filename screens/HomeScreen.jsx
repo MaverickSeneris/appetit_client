@@ -65,13 +65,13 @@ const HomeScreen = ({navigation}) => {
                   <View style={styles.infoContainer}>
                     <Text style={styles.name}>{item.name}</Text>
 
-                    <View style={{flexDirection: 'row'}}>
+                    {/* <View style={{flexDirection: 'row'}}>
                       {item.typeOfDish.map((type, index) => (
                         <View key={index}>
                           <Text style={styles.textDetail}>{type} </Text>
                         </View>
                       ))}
-                    </View>
+                    </View> */}
 
                     <View style={styles.details}>
                       <Text style={styles.textDetail}>
@@ -107,20 +107,21 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     // paddingVertical: 20,
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
+    alignItems: "center"
   },
   headerContainer: {
-    marginTop: 30,
-    marginBottom: 20,
+    // marginTop: 10,
+    // marginBottom: 10,
+    padding: 10
   },
   header: {
     fontFamily: Fonts.SEMIDBOLD,
     fontSize: 22,
   },
   cardContainer: {
+    width: "100%",
     borderRadius: 8,
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   card: {
     width: 168,
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
       },
     }),
     borderRadius: 8,
-    margin: 5,
+    margin: 9,
   },
   imageContainer: {
     borderRadius: 8,
