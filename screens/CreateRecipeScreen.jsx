@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import {Fonts} from '../globalStyles/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { launchImageLibrary } from 'react-native-image-picker';
 
 export default function CreateRecipeScreen() {
   const Unit = ['min', 'hr'];
@@ -21,10 +22,10 @@ export default function CreateRecipeScreen() {
     instructions: '',
     ingredients: ['', '', ''],
     image: '',
-    serves:'',
-    cookingHr:'',
-    cookingMin:'',
-    typeOfDish:'',
+    serves: '',
+    cookingHr: '',
+    cookingMin: '',
+    typeOfDish: '',
   });
 
   function handleChange(key, value) {
@@ -48,6 +49,30 @@ export default function CreateRecipeScreen() {
       ...prevNewRecipe,
       ingredients: [...prevNewRecipe.ingredients, ''], // Add a new empty ingredient
     }));
+  }
+
+  // Function to handle image picking
+  function handleImagePicker() {
+    const options = {
+      mediaType: 'photo',
+      maxWidth: 500,
+      maxHeight: 500,
+      quality: 1,
+    };
+
+    launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else {
+        const source = {uri: response.uri};
+        setNewRecipe(prevNewRecipe => ({
+          ...prevNewRecipe,
+          image: source.uri,
+        }));
+      }
+    });
   }
 
   function handleSubmit() {
@@ -128,7 +153,9 @@ export default function CreateRecipeScreen() {
 
           {/* ***RECIPE PHOTO*** */}
           <Text style={styles.label}>Recipe Photo</Text>
-          <TouchableOpacity style={styles.uploadArea}>
+          <TouchableOpacity
+            style={styles.uploadArea}
+            onPress={handleImagePicker}>
             <AntDesign name="picture" style={{fontSize: 50, color: 'gray'}} />
           </TouchableOpacity>
         </View>
