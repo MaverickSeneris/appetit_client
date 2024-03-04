@@ -11,7 +11,9 @@ import React, {useState} from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import {Fonts} from '../globalStyles/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { launchImageLibrary } from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
+import axios from 'axios';
+
 
 export default function CreateRecipeScreen() {
   const Unit = ['min', 'hr'];
@@ -21,7 +23,7 @@ export default function CreateRecipeScreen() {
     description: '',
     instructions: '',
     ingredients: ['', '', ''],
-    image: '',
+    image: 'https://www.allrecipes.com/thmb/FL-xnyAllLyHcKdkjUZkotVlHR8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/46822-indian-chicken-curry-ii-DDMFS-4x3-39160aaa95674ee395b9d4609e3b0988.jpg',
     serves: '',
     cookingHr: '',
     cookingMin: '',
@@ -76,21 +78,44 @@ export default function CreateRecipeScreen() {
   }
 
   function handleSubmit() {
-    // Here you can handle form submission, e.g., send data to the server
-    console.log(newRecipe);
-    // Reset form after submission
-    setNewRecipe({
-      name: '',
-      description: '',
-      instructions: '',
-      ingredients: [],
-      image: '',
-      serves: 0,
-      cookingHr: '',
-      cookingMin: '',
-      typeOfDish: '',
-    });
+    const createRecipe = async () => {
+      try {
+        const response = await axios.post(
+          'http://192.168.1.237:8080/create',
+          newRecipe,
+        );
+
+        if (response.status !== 201) {
+          throw new Error('Error creating recipe');
+        }
+
+        const data = response.data;
+        console.log('New recipe created:', data);
+
+        // Reset form after successful submission
+        setNewRecipe({
+          name: '',
+          description: '',
+          instructions: '',
+          ingredients: [],
+          image:
+            '',
+          serves: 0,
+          cookingHr: '',
+          cookingMin: '',
+          typeOfDish: '',
+        });
+
+        // Handle any other post-submission logic here, such as navigation or displaying a success message
+      } catch (error) {
+        console.error('Error creating recipe:', error);
+        // Handle any errors or display error message to the user
+      }
+    };
+
+    createRecipe();
   }
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -195,6 +220,15 @@ export default function CreateRecipeScreen() {
               style={styles.rtSmInput}
               value={newRecipe.serves}
               onChangeText={text => handleChange('serves', text)}
+            />
+          </View>
+          <View style={styles.rowSection}>
+            <Text style={styles.label}>Type of Dish</Text>
+            <TextInput
+              placeholder="e.g. Fish"
+              style={styles.rtSmInput}
+              value={newRecipe.typeOfDish}
+              onChangeText={text => handleChange('typeOfDish', text.toString()j)}
             />
           </View>
         </View>

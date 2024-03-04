@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useFocusEffect} from 'react';
 import {
   View,
   Text,
@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}) => {
         const response = await axios.get(apiUri);
         console.log(response.data);
         setRecipes(response.data);
-        // setLoading(false);
+        setLoading(false);
         setTimeout(() => {
           setLoading(false);
         }, 1500);
@@ -35,9 +35,8 @@ const HomeScreen = ({navigation}) => {
     };
 
     fetchData();
-  }, []);
+  },[]);
 
- 
 
   return (
     <View style={styles.container}>
