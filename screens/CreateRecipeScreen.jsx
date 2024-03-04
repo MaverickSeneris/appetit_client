@@ -228,7 +228,7 @@ export default function CreateRecipeScreen() {
               placeholder="e.g. Fish"
               style={styles.rtSmInput}
               value={newRecipe.typeOfDish}
-              onChangeText={text => handleChange('typeOfDish', text.toString()j)}
+              onChangeText={text => handleChange('typeOfDish', text.toString())}
             />
           </View>
         </View>
