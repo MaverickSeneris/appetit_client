@@ -45,6 +45,10 @@ const HomeScreen = ({navigation}) => {
         <LoadingScreen />
       ) : recipes ? (
         <View>
+          <Button
+            title="Create Recipe"
+            onPress={() => navigation.navigate('Create Recipe')}
+          />
           <View style={styles.headerContainer}>
             <Text style={styles.header}>Your Recipes</Text>
           </View>
@@ -73,7 +77,7 @@ const HomeScreen = ({navigation}) => {
                       ))}
                     </View> */}
 
-                    <View style={styles.details}>
+                    {/* <View style={styles.details}>
                       <Text style={styles.textDetail}>
                         <Text>{`${item.cookingTime.duration} ${
                           item.cookingTime.duration > 1
@@ -84,16 +88,13 @@ const HomeScreen = ({navigation}) => {
                       <Text style={styles.textDetail}>
                         Serves: {item.serves}
                       </Text>
-                    </View>
+                    </View> */}
                   </View>
                 </TouchableOpacity>
               )}
             />
           </View>
-          <Button
-            title="Create Recipe"
-            onPress={() => navigation.navigate('Create Recipe')}
-          />
+          
         </View>
       ) : (
         <Text>No data available</Text>
