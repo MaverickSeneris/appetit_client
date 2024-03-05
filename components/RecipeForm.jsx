@@ -13,13 +13,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Fonts} from '../globalStyles/theme';
 
 const RecipeForm = ({
-  newRecipe,
+  recipeData,
   handleChange,
   handleIngredientChange,
   handleAddIngredient,
   handleImagePicker,
-  uploadImage,
-  setNewRecipe,
 }) => {
   return (
     <View>
@@ -36,7 +34,7 @@ const RecipeForm = ({
           <TextInput
             style={styles.input}
             placeholder="Family favorite chicken soup"
-            value={newRecipe.name}
+            value={recipeData.name}
             onChangeText={text => handleChange('name', text)}
           />
 
@@ -48,14 +46,14 @@ const RecipeForm = ({
             numberOfLines={1000}
             style={styles.inputDescription}
             placeholder="e.g. Grandama's delicious recipe..."
-            value={newRecipe.description}
+            value={recipeData.description}
             onChangeText={text => handleChange('description', text)}
           />
 
           {/* ***INGREDIENTS*** */}
           <View style={{gap: 10}}>
             <Text style={styles.label}>Ingredients</Text>
-            {newRecipe.ingredients.map((ingredient, index) => (
+            {recipeData.ingredients.map((ingredient, index) => (
               <TextInput
                 key={index}
                 value={ingredient}
@@ -77,7 +75,7 @@ const RecipeForm = ({
             numberOfLines={1000}
             style={styles.inputDescription}
             placeholder="Enter cooking instruction here"
-            value={newRecipe.instructions}
+            value={recipeData.instructions}
             onChangeText={text => handleChange('instructions', text)}
           />
 
@@ -86,8 +84,8 @@ const RecipeForm = ({
           <TouchableOpacity
             style={styles.uploadArea}
             onPress={handleImagePicker}>
-            {newRecipe.image ? (
-              <Image source={{uri: newRecipe.image}} style={styles.image} />
+            {recipeData.image ? (
+              <Image source={{uri: recipeData.image}} style={styles.image} />
             ) : (
               <AntDesign name="picture" style={{fontSize: 50, color: 'gray'}} />
             )}
@@ -108,14 +106,14 @@ const RecipeForm = ({
               <TextInput
                 placeholder="1"
                 style={styles.rtXsInput}
-                value={newRecipe.cookingHr}
+                value={recipeData.cookingHr}
                 onChangeText={text => handleChange('cookingHr', text)}
               />
               <Text>hr</Text>
               <TextInput
                 placeholder="45"
                 style={styles.rtXsInput}
-                value={newRecipe.cookingMin}
+                value={recipeData.cookingMin}
                 onChangeText={text => handleChange('cookingMin', text)}
               />
               <Text>min</Text>
@@ -127,7 +125,7 @@ const RecipeForm = ({
             <TextInput
               placeholder="2 people"
               style={styles.rtSmInput}
-              value={newRecipe.serves}
+              value={recipeData.serves}
               onChangeText={text => handleChange('serves', text)}
             />
           </View>
@@ -136,7 +134,7 @@ const RecipeForm = ({
             <TextInput
               placeholder="e.g. Fish"
               style={styles.rtSmInput}
-              value={newRecipe.typeOfDish}
+              value={recipeData.typeOfDish}
               onChangeText={text => handleChange('typeOfDish', text)}
             />
           </View>
