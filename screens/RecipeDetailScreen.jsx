@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  Button
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -34,6 +35,18 @@ export default function RecipeDetailScreen({navigation, route}) {
     };
     fetchData();
   }, [itemId]);
+
+  async function handleDeleteRecipe(id) {
+    try {
+      const response = await axios.delete(
+        `http://192.168.1.237:8080/recipes/${id}`,
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return {error: 'An error occurred while deleting the recipe.'};
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -67,9 +80,12 @@ export default function RecipeDetailScreen({navigation, route}) {
             <Text style={styles.infoHeaders}>Instructions</Text>
             <Text>{selectedRecipe.instructions}</Text>
           </View>
+          <Button title='Delete Recipe' onPress={()=> handleDeleteRecipe(selectedRecipe._id)}/>
         </ScrollView>
       ) : (
-        <Text>No data available</Text>
+        <View>
+          <TouchableOpacity onPress={()=> navigation.backToTop()}><Text>Back to All Recipes</Text></TouchableOpacity>
+        </View>
       )}
     </View>
   );
@@ -116,7 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 15,
   },
-  lists:{
-    paddingBottom: 7
-  }
+  lists: {
+    paddingBottom: 7,
+  },
 });

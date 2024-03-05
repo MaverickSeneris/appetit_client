@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useFocusEffect} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -11,32 +11,34 @@ import {
 import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
 import {Fonts} from '../globalStyles/theme';
+import {useFocusEffect} from '@react-navigation/native';
+useFocusEffect;
 
 const HomeScreen = ({navigation}) => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const apiUri = 'http://192.168.1.237:8080/recipes';
-    const fetchData = async () => {
-      try {
-        
-        const response = await axios.get(apiUri);
-        console.log(response.data);
-        setRecipes(response.data);
-        setLoading(false);
-        setTimeout(() => {
+  useFocusEffect(
+    useCallback(() => {
+      const apiUri = 'http://192.168.1.237:8080/recipes';
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(apiUri);
+          console.log(response.data);
+          setRecipes(response.data);
           setLoading(false);
-        }, 1500);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      }
-    };
+          setTimeout(() => {
+            setLoading(false);
+          }, 1500);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setLoading(false);
+        }
+      };
 
-    fetchData();
-  },[]);
-
+      fetchData();
+    }, []),
+  );
 
   return (
     <View style={styles.container}>
@@ -67,35 +69,14 @@ const HomeScreen = ({navigation}) => {
                   </View>
                   <View style={styles.infoContainer}>
                     <Text style={styles.name}>{item.name}</Text>
-
-                    {/* <View style={{flexDirection: 'row'}}>
-                      {item.typeOfDish.map((type, index) => (
-                        <View key={index}>
-                          <Text style={styles.textDetail}>{type} </Text>
-                        </View>
-                      ))}
-                    </View> */}
-
-                    {/* <View style={styles.details}>
-                      <Text style={styles.textDetail}>
-                        <Text>{`${item.cookingTime.duration} ${
-                          item.cookingTime.duration > 1
-                            ? item.cookingTime.unit + 's'
-                            : item.cookingTime.unit
-                        }`}</Text>
-                      </Text>
-                      <Text style={styles.textDetail}>
-                        Serves: {item.serves}
-                      </Text>
-                    </View> */}
                   </View>
                 </TouchableOpacity>
               )}
             />
           </View>
-          
         </View>
       ) : (
+        // TODO: Make a no data available component
         <Text>No data available</Text>
       )}
     </View>
@@ -106,21 +87,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    // paddingVertical: 20,
-    // paddingHorizontal: 20,
-    alignItems: "center"
+    height: '100%',
+    alignItems: 'center',
   },
   headerContainer: {
-    // marginTop: 10,
-    // marginBottom: 10,
-    padding: 10
+    padding: 10,
   },
   header: {
     fontFamily: Fonts.SEMIDBOLD,
     fontSize: 22,
   },
   cardContainer: {
-    width: "100%",
+    width: '100%',
     borderRadius: 8,
   },
   card: {

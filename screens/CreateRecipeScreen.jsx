@@ -6,24 +6,21 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import React, {useState} from 'react';
-import SelectDropdown from 'react-native-select-dropdown';
 import {Fonts} from '../globalStyles/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {launchImageLibrary} from 'react-native-image-picker';
 import axios from 'axios';
 
-
 export default function CreateRecipeScreen() {
-  const Unit = ['min', 'hr'];
-  const [ingredient, setIngredients] = useState([]);
   const [newRecipe, setNewRecipe] = useState({
     name: '',
     description: '',
     instructions: '',
     ingredients: ['', '', ''],
-    image: 'https://www.allrecipes.com/thmb/FL-xnyAllLyHcKdkjUZkotVlHR8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/46822-indian-chicken-curry-ii-DDMFS-4x3-39160aaa95674ee395b9d4609e3b0988.jpg',
+    image: '',
     serves: '',
     cookingHr: '',
     cookingMin: '',
@@ -52,9 +49,8 @@ export default function CreateRecipeScreen() {
       ingredients: [...prevNewRecipe.ingredients, ''], // Add a new empty ingredient
     }));
   }
-
-  // Function to handle image picking
-  function handleImagePicker() {
+  // TODO: Fix image picker error 404
+   const handleImagePicker = () => {
     const options = {
       mediaType: 'photo',
       maxWidth: 500,
@@ -68,14 +64,33 @@ export default function CreateRecipeScreen() {
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
-        const source = {uri: response.uri};
-        setNewRecipe(prevNewRecipe => ({
-          ...prevNewRecipe,
-          image: source.uri,
-        }));
+        uploadImage(response);
       }
     });
-  }
+  };
+
+  const uploadImage = async (image) => {
+    try {
+      const data = new FormData();
+      data.append('file', {
+        uri: image.uri,
+        type: image.type,
+        name: image.fileName || 'image.jpg', // Provide a default name if not available
+      });
+      data.append('upload_preset', '_DemoUser');
+
+      const response = await axios.post('https://api.cloudinary.com/v1_1/mavseneriscamp/image/upload', data);
+      const imageUrl = response.data.secure_url;
+
+      setNewRecipe(prevNewRecipe => ({
+        ...prevNewRecipe,
+        image: imageUrl,
+      }));
+    } catch (error) {
+      console.error('Error uploading image to Cloudinary:', error);
+      // Alert.alert('Error', 'Failed to upload image to Cloudinary. Please try again.');
+    }
+  };
 
   function handleSubmit() {
     const createRecipe = async () => {
@@ -97,19 +112,16 @@ export default function CreateRecipeScreen() {
           name: '',
           description: '',
           instructions: '',
-          ingredients: [],
-          image:
-            '',
-          serves: 0,
+          ingredients: ['', '', ''],
+          image: '',
+          serves: '',
           cookingHr: '',
           cookingMin: '',
           typeOfDish: '',
         });
-
-        // Handle any other post-submission logic here, such as navigation or displaying a success message
       } catch (error) {
         console.error('Error creating recipe:', error);
-        // Handle any errors or display error message to the user
+        // TODO: Handle any errors or display error message to the user
       }
     };
 
@@ -181,7 +193,11 @@ export default function CreateRecipeScreen() {
           <TouchableOpacity
             style={styles.uploadArea}
             onPress={handleImagePicker}>
-            <AntDesign name="picture" style={{fontSize: 50, color: 'gray'}} />
+           {newRecipe.image ? (
+            <Image source={{ uri: newRecipe.image }} style={styles.image} />
+          ) : (
+            <AntDesign name="picture" style={{ fontSize: 50, color: 'gray' }} />
+          )}
           </TouchableOpacity>
         </View>
         {/* ***FORM 2*** */}
@@ -228,7 +244,7 @@ export default function CreateRecipeScreen() {
               placeholder="e.g. Fish"
               style={styles.rtSmInput}
               value={newRecipe.typeOfDish}
-              onChangeText={text => handleChange('typeOfDish', text.toString())}
+              onChangeText={text => handleChange('typeOfDish', text)}
             />
           </View>
         </View>
@@ -315,5 +331,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.10)',
     padding: 10,
     fontFamily: Fonts.REGULAR,
+  },
+
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 8
   },
 });
