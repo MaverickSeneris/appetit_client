@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Button,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Fonts} from '../globalStyles/theme';
@@ -17,7 +18,9 @@ const RecipeForm = ({
   handleChange,
   handleIngredientChange,
   handleAddIngredient,
+  handleDeleteIngredient,
   handleImagePicker,
+  handleSubmit,
 }) => {
   return (
     <View>
@@ -54,13 +57,23 @@ const RecipeForm = ({
           <View style={{gap: 10}}>
             <Text style={styles.label}>Ingredients</Text>
             {recipeData.ingredients.map((ingredient, index) => (
-              <TextInput
-                key={index}
-                value={ingredient}
-                onChangeText={text => handleIngredientChange(index, text)}
-                placeholder={`Ingredient ${index + 1}`}
-                style={styles.input}
-              />
+              <View key={index} style={styles.input}>
+                <View style={{flexDirection: "row", justifyContent: "space-between", alignItems:"center"}}>
+                  <TextInput
+                    key={index}
+                    value={ingredient}
+                    onChangeText={text => handleIngredientChange(index, text)}
+                    placeholder={`Ingredient ${index + 1}`}
+                  />
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="delete"
+                      color="red"
+                      onPress={() => handleDeleteIngredient(index)}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
             ))}
             <TouchableOpacity onPress={handleAddIngredient}>
               <Text>+ Add ingredients</Text>
@@ -139,6 +152,7 @@ const RecipeForm = ({
             />
           </View>
         </View>
+        <Button title="submit" onPress={() => handleSubmit()} />
       </ScrollView>
     </View>
   );
