@@ -10,10 +10,8 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
 import {Fonts} from '../globalStyles/theme';
 import backArrow from '../assets/icons/back-arrow.png';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default function RecipeDetailScreen({navigation, route}) {
   const {itemId} = route.params;
@@ -80,7 +78,8 @@ export default function RecipeDetailScreen({navigation, route}) {
             <Text style={styles.infoHeaders}>Instructions</Text>
             <Text>{selectedRecipe.instructions}</Text>
           </View>
-          <Button title='Delete Recipe' onPress={()=> handleDeleteRecipe(selectedRecipe._id)}/>
+          <Button title='Edit' onPress={()=>navigation.navigate("Edit Recipe",{itemId:selectedRecipe.item_id, selectedRecipe:selectedRecipe})}/>
+          <Button title='Delete' onPress={()=> handleDeleteRecipe(selectedRecipe._id)}/>
         </ScrollView>
       ) : (
         <View>

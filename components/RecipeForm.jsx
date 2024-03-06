@@ -11,7 +11,9 @@ import {
   Button,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Fonts} from '../globalStyles/theme';
+import { Fonts } from '../globalStyles/theme';
+Fonts
+
 
 const RecipeForm = ({
   recipeData,
@@ -24,12 +26,8 @@ const RecipeForm = ({
 }) => {
   return (
     <View>
-      <ScrollView>
-        {/* ***HEADER*** */}
-        <View style={styles.headerContainer}>
-          <Text style={styles.header}>Create a Recipe</Text>
-        </View>
 
+      <ScrollView>
         {/* ***FORM 1*** */}
         <View style={{width: '100%'}}>
           {/* Recipe Title */}

@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import RecipeDetailScreen from './screens/RecipeDetailScreen';
 import CreateRecipeScreen from './screens/CreateRecipeScreen';
+import EditRecipeScreen from './screens/EditRecipeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,8 @@ export default function App() {
         />
         <Stack.Screen name="Recipe" component={RecipeDetailScreen} />
         <Stack.Screen name="Create Recipe" component={CreateRecipeScreen} />
+        <Stack.Screen name="Edit Recipe" component={EditRecipeScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -40,5 +43,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   },
 });

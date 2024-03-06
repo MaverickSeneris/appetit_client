@@ -12,7 +12,8 @@ import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
 import {Fonts} from '../globalStyles/theme';
 import {useFocusEffect} from '@react-navigation/native';
-useFocusEffect;
+import Header from '../components/Header';
+
 
 const HomeScreen = ({navigation}) => {
   const [recipes, setRecipes] = useState([]);
@@ -50,9 +51,7 @@ const HomeScreen = ({navigation}) => {
             title="Create Recipe"
             onPress={() => navigation.navigate('Create Recipe')}
           />
-          <View style={styles.headerContainer}>
-            <Text style={styles.header}>Your Recipes</Text>
-          </View>
+         <Header header={"All Recipes"}/>
           <View style={styles.cardContainer}>
             <FlatList
               numColumns={2}
