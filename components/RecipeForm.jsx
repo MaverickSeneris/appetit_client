@@ -85,8 +85,8 @@ const RecipeForm = ({
             editable
             numberOfLines={1000}
             style={styles.inputDescription}
-            placeholder="Enter cooking instruction here"
-            value={recipeData.instructions}
+            placeholder="e.g. Grandama's delicious recipe..."
+            value={recipeData.instructions.toString()}
             onChangeText={text => handleChange('instructions', text)}
           />
 
